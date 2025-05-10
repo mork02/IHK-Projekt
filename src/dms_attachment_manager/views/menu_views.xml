@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <menuitem 
+            id="cat_menu_dms_config_file_export" 
+            name="File Export" 
+            parent="dms.cat_menu_dms_config" 
+            sequence="15"
+        />
+        <menuitem
+            id="cat_menu_dms_config_attachment"
+            name="Attachments"
+            parent="cat_menu_dms_config_file_export"
+            sequence="1"
+            action="dms_attachment_manager.ir_attachment_menu_action"
+            groups="base.group_user"
+        />
+        <menuitem
+            id="cat_menu_dms_config_attachment_wizard"
+            name="Attachments Export"
+            parent="cat_menu_dms_config_file_export"
+            sequence="5"
+            action="dms_attachment_manager.ir_attachment_export_action"
+            groups="base.group_user"
+        />
+    </data>
+</odoo>

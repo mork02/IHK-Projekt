@@ -1,0 +1,85 @@
+<odoo>
+    <data>
+        <record id="ir_attachment_tree_view" model="ir.ui.view">
+            <field name="name">attachment.tree</field>
+            <field name="model">ir.attachment</field>
+            <field name="priority">999</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="datas_fname" />
+                    <field name="res_model" />
+                    <field name="file_size" />
+                    <field name="dms_file_id" />
+                    <field name="create_uid" />
+                    <field name="create_date" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="ir_attachment_filter_extension" model="ir.ui.view">
+            <field name="name">attachment.tree.search.extension</field>
+            <field name="model">ir.attachment</field>
+            <field name="inherit_id" ref="base.view_attachment_search" />
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <filter
+            string="Today"
+            name="today_filter"
+            domain="[('create_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
+                                ('create_date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"
+          />
+                    <filter
+            string="Yesterday"
+            name="yesterday"
+            domain="[('create_date', '&gt;=', (context_today() + relativedelta(days=-1)).strftime('%Y-%m-%d 00:00:00')),
+                                ('create_date', '&lt;', context_today().strftime('%Y-%m-%d 00:00:00'))]"
+          />
+                    <filter
+            string="This Week"
+            name="this_week"
+            domain="[('create_date', '&gt;=', (context_today() + relativedelta(weekday=0)).strftime('%Y-%m-%d')),
+                                ('create_date', '&lt;=', (context_today() + relativedelta(weekday=6)).strftime('%Y-%m-%d'))]"
+          />
+                    <filter
+            string="Last Week"
+            name="last_week"
+            domain="[('create_date', '&gt;=', (context_today() + relativedelta(weeks=-1, weekday=0)).strftime('%Y-%m-%d')),
+                                ('create_date', '&lt;=', (context_today() + relativedelta(weeks=-1, weekday=6)).strftime('%Y-%m-%d'))]"
+          />
+                    <filter
+            string="Current Month"
+            name="current_month"
+            domain="[('create_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')),
+                                ('create_date','&gt;=',time.strftime('%%Y-%%m-01'))]"
+          />
+                    <filter string="My Files" name="my_files" domain="[('create_uid', '=', uid)]" />
+                    <group expand="0" string="Group By">
+                        <filter
+              string="Resource Model"
+              name="group_by_resource_model"
+              context="{'group_by':'res_model'}"
+            />
+                        <filter string="Create Date" name="group_by_create_date" context="{'group_by':'create_date'}" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="ir_attachment_menu_action" model="ir.actions.act_window">
+            <field name="name">Attachment</field>
+            <field name="res_model">ir.attachment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ir_attachment_tree_view" />
+            <field name="target">current</field>
+            <field name="search_view_id" ref="base.view_attachment_search" />
+            <field name="domain">[
+                ['name', 'not ilike', '.js'],
+                ['name', 'not ilike', '.css'],
+                ['name', 'not ilike', '.json'],
+                ['res_id', '!=', False],
+                ['res_model', '!=', False],
+                ['res_model', '!=', 'ir.attachment.export']
+            ]</field>
+        </record>
+    </data>
+</odoo>

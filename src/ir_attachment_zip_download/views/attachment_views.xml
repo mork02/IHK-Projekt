@@ -1,0 +1,11 @@
+<odoo>
+    <record id="attachment_download_action" model="ir.actions.server">
+        <field name="name">Download</field>
+        <field name="model_id" ref="base.model_ir_attachment" />
+        <field name="binding_model_id" ref="base.model_ir_attachment" />
+        <field name="state">code</field>
+        <field name="code">
+            action = env['attachment.download'].with_context(active_ids=records.ids).prepare_attachment()
+        </field>
+    </record>
+</odoo>
