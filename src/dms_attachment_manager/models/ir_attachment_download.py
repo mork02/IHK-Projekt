@@ -2,7 +2,7 @@ from odoo import _, models
 from odoo.exceptions import UserError
 
 
-class IrAttachment(models.Model):
+class IrAttachmentDownload(models.Model):
     _name = "attachment.download"
     _description = "Attachment Download"
 
@@ -55,7 +55,7 @@ class IrAttachment(models.Model):
         return self.env["ir.attachment"].browse(selected_ids)
 
     def _get_filename(self):
-        self.ensure_one()
+        self.ensure_one()   # only one record
 
         base_name = self.name
         extension = ""

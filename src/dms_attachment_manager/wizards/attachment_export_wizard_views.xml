@@ -1,6 +1,5 @@
 <odoo>
     <data>
-
         <record id="view_ir_attachment_export_form" model="ir.ui.view">
             <field name="name">ir.attachment.export.form</field>
             <field name="model">ir.attachment.export</field>
@@ -9,20 +8,20 @@
 
                     <header>
                         <button
-              name="action_check_attachments"
-              type="object"
-              string="Check Export"
-              class="oe_highlight"
-              attrs="{'invisible': [('state', '!=', 'draft')]}"
-            />
+                            name="action_check_attachments"
+                            type="object"
+                            string="Check Export"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"
+                        />
 
                         <button
-              name="pack_zip"
-              type="object"
-              string="Pack as Zip"
-              class="btn-primary"
-              attrs="{'invisible': [('state', '!=', 'open')]}"
-            />
+                            name="pack_zip"
+                            type="object"
+                            string="Pack as Zip"
+                            class="btn-primary"
+                            attrs="{'invisible': [('state', '!=', 'open')]}"
+                        />
 
                         <field name="state" widget="statusbar" statusbar_visible="draft,open,done" />
                     </header>
@@ -31,18 +30,18 @@
 
                         <group col="2">
                             <field
-                name="name"
-                placeholder="Generated automatically when empty."
-                attrs="{'invisible': [('state', '=', 'draft')]}"
-              />
+                                name="name"
+                                placeholder="Generated automatically when empty."
+                                attrs="{'invisible': [('state', '=', 'draft')]}"
+                            />
                         </group>
 
                     <group col="2">
                         <field
-                name="model_ids"
-                widget="many2many_tags"
-                attrs="{'readonly': [('state', '!=', 'draft')]}"
-              />
+                            name="model_ids"
+                            widget="many2many_tags"
+                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                        />
 
                     </group>
 
@@ -56,33 +55,30 @@
 
                         <group col="2">
                             <field
-                name="total_attachment_size"
-                string="Total File Size"
-                attrs="{'invisible': [('state', '=', 'draft')]}"
-              />
+                                name="total_attachment_size"
+                                string="Total File Size"
+                                attrs="{'invisible': [('state', '=', 'draft')]}"
+                            />
                         </group>
 
                         <group col="1">
                             <field
-                name="attachment_ids"
-                widget="one2many_list"
-                nolabel="1"
-                attrs="{'invisible': [('state', '=', 'draft')]}"
-              >
+                                name="attachment_ids"
+                                widget="one2many_list"
+                                nolabel="1"
+                                attrs="{'invisible': [('state', '=', 'draft')]}"
+                            >
                                 <tree string="Attachments">
                                     <field name="name" />
                                     <field name="res_model" />
                                     <field name="create_date" />
                                     <field name="file_size" />
-
                                 </tree>
                             </field>
                         </group>
-
                     </sheet>
                 </form>
             </field>
         </record>
-
     </data>
 </odoo>

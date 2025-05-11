@@ -6,7 +6,6 @@ from io import BytesIO
 from odoo import _, http
 from odoo.http import content_disposition, request
 
-
 class AttachmentDownloadController(http.Controller):
     @http.route("/web/attachment/download_zip", type="http", auth="user")
     def download_zip(self, ids=None, **kwargs):
@@ -22,7 +21,10 @@ class AttachmentDownloadController(http.Controller):
 
         if not attachments:
             return request.not_found()
+        
+        return self._create_zip(attachments)
 
+    def _create_zip(self, attachments):
         zip_buffer = BytesIO()
         with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
             for attachment in attachments:
@@ -64,3 +66,5 @@ class AttachmentDownloadController(http.Controller):
             ("Content-Disposition", content_disposition(filename)),
         ]
         return request.make_response(zip_buffer.getvalue(), headers=headers)
+
+

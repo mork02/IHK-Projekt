@@ -1,5 +1,15 @@
 <odoo>
     <data>
+        <record id="attachment_download_action" model="ir.actions.server">
+            <field name="name">Download</field>
+            <field name="model_id" ref="base.model_ir_attachment" />
+            <field name="binding_model_id" ref="base.model_ir_attachment" />
+            <field name="state">code</field>
+            <field name="code">
+                action = env['attachment.download'].with_context(active_ids=records.ids).prepare_attachment()
+            </field>
+        </record>
+
         <record id="ir_attachment_tree_view" model="ir.ui.view">
             <field name="name">attachment.tree</field>
             <field name="model">ir.attachment</field>
@@ -23,42 +33,42 @@
             <field name="arch" type="xml">
                 <xpath expr="//search" position="inside">
                     <filter
-            string="Today"
-            name="today_filter"
-            domain="[('create_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
+                        string="Today"
+                        name="today_filter"
+                        domain="[('create_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')),
                                 ('create_date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"
-          />
+                    />
                     <filter
-            string="Yesterday"
-            name="yesterday"
-            domain="[('create_date', '&gt;=', (context_today() + relativedelta(days=-1)).strftime('%Y-%m-%d 00:00:00')),
+                        string="Yesterday"
+                        name="yesterday"
+                        domain="[('create_date', '&gt;=', (context_today() + relativedelta(days=-1)).strftime('%Y-%m-%d 00:00:00')),
                                 ('create_date', '&lt;', context_today().strftime('%Y-%m-%d 00:00:00'))]"
-          />
+                    />
                     <filter
-            string="This Week"
-            name="this_week"
-            domain="[('create_date', '&gt;=', (context_today() + relativedelta(weekday=0)).strftime('%Y-%m-%d')),
+                        string="This Week"
+                        name="this_week"
+                        domain="[('create_date', '&gt;=', (context_today() + relativedelta(weekday=0)).strftime('%Y-%m-%d')),
                                 ('create_date', '&lt;=', (context_today() + relativedelta(weekday=6)).strftime('%Y-%m-%d'))]"
-          />
+                    />
                     <filter
-            string="Last Week"
-            name="last_week"
-            domain="[('create_date', '&gt;=', (context_today() + relativedelta(weeks=-1, weekday=0)).strftime('%Y-%m-%d')),
+                        string="Last Week"
+                        name="last_week"
+                        domain="[('create_date', '&gt;=', (context_today() + relativedelta(weeks=-1, weekday=0)).strftime('%Y-%m-%d')),
                                 ('create_date', '&lt;=', (context_today() + relativedelta(weeks=-1, weekday=6)).strftime('%Y-%m-%d'))]"
-          />
+                    />
                     <filter
-            string="Current Month"
-            name="current_month"
-            domain="[('create_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')),
+                        string="Current Month"
+                        name="current_month"
+                        domain="[('create_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')),
                                 ('create_date','&gt;=',time.strftime('%%Y-%%m-01'))]"
-          />
+                    />
                     <filter string="My Files" name="my_files" domain="[('create_uid', '=', uid)]" />
                     <group expand="0" string="Group By">
                         <filter
-              string="Resource Model"
-              name="group_by_resource_model"
-              context="{'group_by':'res_model'}"
-            />
+                            string="Resource Model"
+                            name="group_by_resource_model"
+                            context="{'group_by':'res_model'}"
+                        />
                         <filter string="Create Date" name="group_by_create_date" context="{'group_by':'create_date'}" />
                     </group>
                 </xpath>
