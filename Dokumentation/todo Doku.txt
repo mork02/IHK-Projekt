@@ -1,0 +1,10 @@
+Abkürzungsverzeichnis erstellen.
+Anhänge erstellen für: 
+A.1: Mockup / Entwurf
+A.1: Detaillierte Zeitplanung
+A.2: Ressourcenplanung
+A.3: Ablaufdiagramm
+A.5: Oberflächenentwurf
+
+Links hinzufügen:
+6.2: Pflichtenheft
