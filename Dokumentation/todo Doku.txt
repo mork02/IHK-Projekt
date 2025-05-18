@@ -5,6 +5,10 @@ A.1: Detaillierte Zeitplanung
 A.2: Ressourcenplanung
 A.3: Ablaufdiagramm
 A.5: Oberflächenentwurf
+A.0: Verzeichnisstruktur
+A.9: Klassendiagramm
+A.0: GitLab-Issue
+A.0: Verteilungsdiagramm
 
 Links hinzufügen:
 6.2: Pflichtenheft
