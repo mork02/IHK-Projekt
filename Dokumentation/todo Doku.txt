@@ -9,6 +9,7 @@ A.0: Verzeichnisstruktur
 A.9: Klassendiagramm
 A.0: GitLab-Issue
 A.0: Verteilungsdiagramm
+A.0: Benutzerdokumentation
 
 Links hinzufügen:
 6.2: Pflichtenheft
