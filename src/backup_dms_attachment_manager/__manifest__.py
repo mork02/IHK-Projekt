@@ -9,6 +9,7 @@
     "data": [
         "views/attachment_export_views.xml",
         "wizards/attachment_export_wizard_views.xml",
+        "views/attachment_download_views.xml",
         "views/menu_views.xml"
     ],
     "installable": True,
