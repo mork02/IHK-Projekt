@@ -10,6 +10,7 @@ A.9: Klassendiagramm
 A.0: GitLab-Issue
 A.0: Verteilungsdiagramm
 A.0: Benutzerdokumentation
+Anhang A.0: Screenshots der fertigen Benutzeroberfläche
 
 Links hinzufügen:
 6.2: Pflichtenheft
