@@ -1,16 +1,8 @@
 Abkürzungsverzeichnis erstellen.
 Anhänge erstellen für: 
-A.1: Mockup / Entwurf
-A.1: Detaillierte Zeitplanung
-A.2: Ressourcenplanung
-A.3: Ablaufdiagramm
-A.5: Oberflächenentwurf
-A.0: Verzeichnisstruktur
-A.9: Klassendiagramm
-A.0: GitLab-Issue
-A.0: Verteilungsdiagramm
-A.0: Benutzerdokumentation
-Anhang A.0: Screenshots der fertigen Benutzeroberfläche
 
-Links hinzufügen:
-6.2: Pflichtenheft
+Anhang A.9: Screenshots der fertigen Benutzeroberfläche.
+ A.10: Quellcode
+ A.11: Unittests.
+ A.12: Benutzerdokumentation 
+ A.13: Entwicklerdokumentation

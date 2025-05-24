@@ -2,7 +2,6 @@ from odoo.tests.common import TransactionCase
 from datetime import date, timedelta
 import base64
 
-
 class TestIrAttachmentExportIsExported(TransactionCase):
     def setUp(self):
         super().setUp()
